@@ -1,7 +1,7 @@
-POST http://localhost:3001/api/notes
-Content-type application/json
+GET  http://localhost:3001/api/persons
+Content-Type: application/json
 
-{
-    name : gil,
-    
-}
+# {
+#   "name": "Gilbert Irumva",
+#   "number": "070-1234567"
+# }
