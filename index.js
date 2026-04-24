@@ -72,7 +72,13 @@ app.post('/api/persons', (req, res) => {
   if (!body.name || !body.number) {
     return res.status(400).json({ error: 'name or number missing' })
   }
-  
+
+
+    const exists = persons.some(p => p.name === body.name)
+  if (exists) {
+    return res.status(400).json({ error: 'name must be unique' })
+  }
+ 
   const generateId = () => {
     const maxId = persons.length > 0
       ? Math.max(...persons.map(p => Number(p.id)))
@@ -90,6 +96,8 @@ app.post('/api/persons', (req, res) => {
 
   res.status(201).json(person)
 })
+
+
 
 
 const PORT = 3001
