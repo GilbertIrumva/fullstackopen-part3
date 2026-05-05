@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "build:ui": "rm -rf dist && cd ../frontend && npm run build && cp -r dist ../phonebook-backend",
+    "build:ui": "rm -rf dist && cd ../phoneBook-frontend && npm run build && cp -r dist ../phoneBook-backend",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +20,6 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "morgan": "^1.10.1",
-    "watch": "^1.0.2"
+    "morgan": "^1.10.1"
   }
 }
