@@ -24,35 +24,6 @@ app.get('/api/persons', (req, res) => {
 })
 
 
-app.get('/info', (req, res) => {
-  Person.find({}).then(persons => {
-    const count = persons.length
-    const date = new Date()
-
-    res.send(`
-      <p>Phonebook has info for ${count} people</p>
-      <p>${date}</p>
-    `)
-  })
-})
-
-
-app.get('/api/persons/:id', (req, res) => {
-  const id = req.params.id
-
-  Person.findById(id).then(person => {
-    if (person) {
-      res.json(person)
-    } else {
-      res.status(404).end()
-    }
-  }).catch(error => {
-    console.log(error)
-    res.status(400).send({ error: 'malformatted id' })
-  })
-})
-
-
 app.post('/api/persons', (req, res) => {
   const body = req.body
 
@@ -73,16 +44,7 @@ app.post('/api/persons', (req, res) => {
 })
 
 
-app.delete('/api/persons/:id', (req, res) => {
-  const id = req.params.id
-
-  Person.findByIdAndDelete(id).then(() => {
-    res.status(204).end()
-  })
-})
-
-
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
