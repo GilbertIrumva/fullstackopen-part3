@@ -35,6 +35,18 @@ app.get('/api/persons/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
+app.get('/info', (req, res, next) => {
+  Person.countDocuments({})
+    .then(count => {
+      const date = new Date()
+      res.send(`
+        <p>Phonebook has info for ${count} people</p>
+        <p>${date}</p>
+      `)
+    })
+    .catch(error => next(error))
+})
+
 app.post('/api/persons', (req, res, next) => {
   const body = req.body
 
@@ -78,7 +90,6 @@ app.put('/api/persons/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
-
 const errorHandler = (error, req, res, next) => {
   console.error(error.message)
 
@@ -91,7 +102,7 @@ const errorHandler = (error, req, res, next) => {
 app.use(errorHandler)
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
