@@ -20,8 +20,13 @@ const personSchema = new mongoose.Schema({
   },
   number: {
     type: String,
-    maxLength: 20,
+    minLength: 8,
     required: true,
+    validate: {
+      validator: (v) => /^\d{2,3}-\d+$/.test(v),
+      message: props =>
+        `${props.value} is not a valid phone number! Format must be 2-3 digits, a dash, then more digits (e.g. 09-1234567 or 040-1234567).`
+    },
   },
 })
 
