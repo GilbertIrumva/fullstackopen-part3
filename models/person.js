@@ -20,7 +20,7 @@ const personSchema = new mongoose.Schema({
   },
   number: {
     type: String,
-    maxLength: 10,
+    maxLength: 20,
     required: true,
   },
 })
