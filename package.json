@@ -11,6 +11,7 @@
     "dev": "node --watch index.js",
     "build:ui": "rm -rf dist && cd ../phoneBook-frontend && npm run build && cp -r dist ../phoneBook-backend",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,10 +19,15 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.6.2",
     "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.4.0",
+    "globals": "^17.6.0"
   }
 }
